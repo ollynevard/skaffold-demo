@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: skaffold-demo-back-end
+build:
+  artifacts:
+    - image: skaffold-demo-back-end-api
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes.yml

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Skaffold Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+      body {
+        background: #2c292d;
+        color: #fdf9f6;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0px auto;
+        max-width: 450px;
+        padding: 100px 40px;
+      }
+      span {
+        color: #ff6188;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Skaffold demo</h1>
+    <p>
+      Front-end site is being served from IP
+      <span id="fe-ip"></span>
+    </p>
+    <p>
+      Back-end API is being served from IP
+      <span id="be-ip"></span>
+    </p>
+    <script>
+      document.getElementById("fe-ip").innerHTML = document.cookie.match(
+        /(^| )webIP=([^;]+)/
+      )[2];
+      fetch("http://192.168.64.2:30000")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("be-ip").innerHTML = data.IP;
+        });
+    </script>
+  </body>
+</html>
