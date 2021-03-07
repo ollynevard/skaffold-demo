@@ -1,0 +1,12 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+requires:
+  - git:
+      repo: https://github.com/ollynevard/skaffold-demo
+      path: back-end
+      ref: main
+
+  - git:
+      repo: https://github.com/ollynevard/skaffold-demo
+      path: front-end
+      ref: main
